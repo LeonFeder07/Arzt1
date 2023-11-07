@@ -13,19 +13,19 @@ public class Patient {
 
     }
 
-    Patient getNachfolger() {
+    public Patient getNachfolger() {
         return nachfolger;
     }
 
-    String getVorname() {
+    public String getVorname() {
         return vorname;
     }
 
-    String getNachname() {
+    public String getNachname() {
         return nachname;
     }
 
-    String getKrankenkasse() {
+    public String getKrankenkasse() {
         return krankenkasse;
     }
 
