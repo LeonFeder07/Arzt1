@@ -1,14 +1,16 @@
+package Praxis;
+
 public class Patient {
     String vorname = "";
     String nachname = "";
     String krankenkasse = "";
     Patient nachfolger;
 
-    Patient(String pvorname, String pnachname, String pkrankenkasse) {
+    Patient(String pvorname, String pnachname) {
 
         vorname = pvorname;
         nachname = pnachname;
-        krankenkasse = pkrankenkasse;
+
 
 
     }
@@ -42,6 +44,14 @@ public class Patient {
     }
 
     public void setNachfolger(Patient pNachfolger) {
-        nachfolger = pNachfolger;
+        if(nachfolger==null){
+        nachfolger = pNachfolger;}
+        while(nachfolger!=null){
+
+                nachfolger.setNachfolger(pNachfolger);
+            }
+
     }
-}
+
+    }
+
