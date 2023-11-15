@@ -23,7 +23,7 @@ public class Praxis {
         aufnehmenButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+aufnehmen();
             }
         });
         aufrufenButton.addActionListener(new ActionListener() {
@@ -33,7 +33,8 @@ public class Praxis {
             }
         });
     }
-    public void aufnehmen(Patient pPatient){
+    public void aufnehmen(){
+       Patient pPatient=new Patient(textField1.getText()+",",textField2.getText());
         if(platz1==null){
             platz1=pPatient;
 

@@ -6,7 +6,7 @@ public class Test {
     public void Test(){
         praxis1=new Praxis();
         patient=new Patient("Leon","Feder");
-        praxis1.aufnehmen(patient);
+
 
 
     }
