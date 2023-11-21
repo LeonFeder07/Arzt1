@@ -23,18 +23,30 @@ public class Praxis {
         aufnehmenButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-aufnehmen();
+            aufnehmen();
+            textField1.setText("");
+            textField2.setText("");
+            textField3.setText(platz1.getNachname() + platz1.getVorname());
             }
+
         });
         aufrufenButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                aufrufen();
+                textField1.setText("");
+                textField2.setText("");
+                if(platz1!=null) {
+                    textField3.setText(platz1.getNachname()+", "+ platz1.getVorname());
+                }else{
+                    textField3.setText("");
+                }
 
             }
         });
     }
     public void aufnehmen(){
-       Patient pPatient=new Patient(textField1.getText()+",",textField2.getText());
+       Patient pPatient=new Patient(textField1.getText(),textField2.getText());
         if(platz1==null){
             platz1=pPatient;
 
@@ -42,11 +54,15 @@ aufnehmen();
             platz1.setNachfolger(pPatient);
 
         }
-
+        if(platz1!=null) {
+            textField3.setText(platz1.getNachname()  +", "+ platz1.getVorname());
+        }else{
+            textField3.setText("");
+        }
     }
     public Patient aufrufen(){
         if(platz1!=null) {
-            System.out.println(platz1.getVorname() + "," + platz1.getNachname() + "," + platz1.getKrankenkasse());
+           // System.out.println(platz1.getVorname() + "," + platz1.getNachname() + "," + platz1.getKrankenkasse());
             Patient zwischenspeicher = platz1;
             platz1 = platz1.getNachfolger();
             return zwischenspeicher;

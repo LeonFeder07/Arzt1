@@ -46,7 +46,8 @@ public class Patient {
     public void setNachfolger(Patient pNachfolger) {
         if(nachfolger==null){
         nachfolger = pNachfolger;}
-        while(nachfolger!=null){
+        else{
+
 
                 nachfolger.setNachfolger(pNachfolger);
             }
