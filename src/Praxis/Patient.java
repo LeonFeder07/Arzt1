@@ -15,9 +15,9 @@ public class Patient {
 
     }
 
-    public Patient getNachfolger() {
-        return nachfolger;
-    }
+   // public Patient getNachfolger() {
+     //   return nachfolger;
+   // }
 
     public String getVorname() {
         return vorname;
@@ -43,16 +43,16 @@ public class Patient {
         nachname = pNachname;
     }
 
-    public void setNachfolger(Patient pNachfolger) {
-        if(nachfolger==null){
-        nachfolger = pNachfolger;}
-        else{
+   // public void setNachfolger(Patient pNachfolger) {
+     //   if(nachfolger==null){
+       // nachfolger = pNachfolger;}
+        //else{
 
 
-                nachfolger.setNachfolger(pNachfolger);
-            }
+          //      nachfolger.setNachfolger(pNachfolger);
+           // }
 
-    }
+    //}
 
     }
 

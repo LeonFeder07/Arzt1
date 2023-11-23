@@ -5,69 +5,81 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class Praxis {
+    Queue <Patient> blutschlange;
+    Queue <Patient> arztschlange;
     Patient platz1;
     private JPanel artzpraxis;
     private JTextField textField1;
     private JTextField textField2;
-    private JButton aufnehmenButton;
+    private JButton aufnehmenAButton;
     private JTextField textField3;
-    private JButton aufrufenButton;
+    private JButton aufrufenAButton;
     private JLabel Artztpraxis;
     private JLabel name;
     private JLabel nachname;
     private JLabel label2;
+    private JButton aufnehmenBlutdruckButton;
+    private JButton aufrufenBlutdruckButton;
+    private JTextField textField4;
+    private JLabel label5;
+    private JTextField textField5;
 
     public Praxis() {
+blutschlange= new Queue <Patient>();
+        arztschlange= new Queue <Patient>();
 
-
-        aufnehmenButton.addActionListener(new ActionListener() {
+        aufnehmenAButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-            aufnehmen();
+                Patient pPatient=new Patient(textField1.getText(),textField2.getText());
+                arztschlange.enqueue(pPatient);
             textField1.setText("");
             textField2.setText("");
-            textField3.setText(platz1.getNachname() + platz1.getVorname());
+                Patient lokal = arztschlange.front();
+
+                textField3.setText(lokal.getNachname()+", "+ lokal.getVorname());
             }
 
         });
-        aufrufenButton.addActionListener(new ActionListener() {
+        aufrufenAButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                aufrufen();
+                Patient lokal = arztschlange.front();
+
+                textField4.setText(lokal.getNachname()+", "+ lokal.getVorname());
+                textField3.setText("");
+                arztschlange.dequeue();
                 textField1.setText("");
                 textField2.setText("");
-                if(platz1!=null) {
-                    textField3.setText(platz1.getNachname()+", "+ platz1.getVorname());
-                }else{
-                    textField3.setText("");
-                }
+
 
             }
         });
-    }
-    public void aufnehmen(){
-       Patient pPatient=new Patient(textField1.getText(),textField2.getText());
-        if(platz1==null){
-            platz1=pPatient;
+        aufnehmenBlutdruckButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Patient pPatient=new Patient(textField1.getText(),textField2.getText());
+                blutschlange.enqueue(pPatient);
+                textField1.setText("");
+                textField2.setText("");
+                Patient lokal = blutschlange.front();
 
-        } else{
-            platz1.setNachfolger(pPatient);
+                textField5.setText(lokal.getNachname()+", "+ lokal.getVorname());
+            }
+        });
+        aufrufenBlutdruckButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Patient lokal = blutschlange.front();
 
-        }
-        if(platz1!=null) {
-            textField3.setText(platz1.getNachname()  +", "+ platz1.getVorname());
-        }else{
-            textField3.setText("");
-        }
+                textField4.setText(lokal.getNachname()+", "+ lokal.getVorname());
+                blutschlange.dequeue();
+                textField5.setText("");
+            }
+        });
     }
-    public Patient aufrufen(){
-        if(platz1!=null) {
-           // System.out.println(platz1.getVorname() + "," + platz1.getNachname() + "," + platz1.getKrankenkasse());
-            Patient zwischenspeicher = platz1;
-            platz1 = platz1.getNachfolger();
-            return zwischenspeicher;
-        }else{return null;}
-    }
+
+
 
     public static void main(String[] args) {
         JFrame frame = new JFrame("Praxis");
