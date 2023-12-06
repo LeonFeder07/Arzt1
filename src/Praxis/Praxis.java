@@ -26,6 +26,7 @@ public class Praxis {
     private JTextField textField5;
     private JButton stackbuttom;
     private JTextField textField6;
+    private JButton eingabeLeerenButton;
 
     public Praxis() {
 blutschlange= new Queue <Patient>();
@@ -35,11 +36,10 @@ blutschlange= new Queue <Patient>();
         aufnehmenAButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Patient pPatient=new Patient(textField1.getText(),textField2.getText());
+                Patient pPatient=new Patient(textField1.getText(),textField2.getText(),"Arzt");
                 arztschlange.enqueue(pPatient);
 
-            textField1.setText("");
-            textField2.setText("");
+
                 Patient lokal = arztschlange.front();
 
                 textField3.setText(lokal.getNachname()+", "+ lokal.getVorname());
@@ -53,7 +53,7 @@ blutschlange= new Queue <Patient>();
              if(arztschlange.front()!=null) {
                  rechnung.push(arztschlange.front());
 
-                 textField6.setText(rechnung.top().getNachname() +","+ rechnung.top().getVorname());
+                 textField6.setText(rechnung.top().getNachname() +", "+ rechnung.top().getVorname()+", "+rechnung.top().getTermin());
              }
                 if(arztschlange.front()!=null) {
 
@@ -62,8 +62,7 @@ blutschlange= new Queue <Patient>();
                     textField3.setText("");
                     arztschlange.dequeue();
                     lokal=arztschlange.front();
-                    textField1.setText("");
-                    textField2.setText("");
+
 
                     if(arztschlange.front()!=null) {
                         textField3.setText(lokal.getNachname() + ", " + lokal.getVorname());
@@ -75,11 +74,10 @@ blutschlange= new Queue <Patient>();
         aufnehmenBlutdruckButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Patient pPatient=new Patient(textField1.getText(),textField2.getText());
+                Patient pPatient=new Patient(textField1.getText(),textField2.getText(),"Blut");
                 blutschlange.enqueue(pPatient);
 
-                textField1.setText("");
-                textField2.setText("");
+
                 Patient lokal = blutschlange.front();
 
                 textField5.setText(lokal.getNachname()+", "+ lokal.getVorname());
@@ -89,9 +87,9 @@ blutschlange= new Queue <Patient>();
             @Override
             public void actionPerformed(ActionEvent e) {
                 Patient  lokal = blutschlange.front();
-                if(arztschlange.front()!=null) {
+                if(blutschlange.front()!=null) {
                     rechnung.push(blutschlange.front());
-                    textField6.setText(rechnung.top().getNachname() +","+ rechnung.top().getVorname());
+                    textField6.setText(rechnung.top().getNachname() +","+ rechnung.top().getVorname()+", "+rechnung.top().getTermin());
                 }
                if(blutschlange.front()!=null) {
 
@@ -112,10 +110,17 @@ blutschlange= new Queue <Patient>();
 
                     rechnung.pop();
                 if(!rechnung.isEmpty()) {
-                    textField6.setText(rechnung.top().getNachname() + "," + rechnung.top().getVorname());
+                    textField6.setText(rechnung.top().getNachname() + ", " + rechnung.top().getVorname()+", "+rechnung.top().getTermin());
                 }else{
                     textField6.setText("");
                 }
+            }
+        });
+        eingabeLeerenButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                textField1.setText("");
+                textField2.setText("");
             }
         });
     }

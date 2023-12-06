@@ -3,13 +3,14 @@ package Praxis;
 public class Patient {
     String vorname = "";
     String nachname = "";
-    String krankenkasse = "";
+    String termin= "";
     Patient nachfolger;
 
-    Patient(String pvorname, String pnachname) {
+    Patient(String pvorname, String pnachname,String pTermin) {
 
         vorname = pvorname;
         nachname = pnachname;
+        termin = pTermin;
 
 
 
@@ -27,12 +28,12 @@ public class Patient {
         return nachname;
     }
 
-    public String getKrankenkasse() {
-        return krankenkasse;
+    public String getTermin() {
+        return termin;
     }
 
-    public void setKrankenkasse(String pKrankenkasse) {
-        krankenkasse = pKrankenkasse;
+    public void setTermin(String pTermin) {
+        termin = pTermin;
     }
 
     public void setVorname(String pVorname) {

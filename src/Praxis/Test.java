@@ -5,7 +5,7 @@ public class Test {
     Patient patient;
     public void Test(){
         praxis1=new Praxis();
-        patient=new Patient("Leon","Feder");
+
 
 
 
